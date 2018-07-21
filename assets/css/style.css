@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(134,147,151);
+}
+
+
+h1,
+p {
+    color: rgb(250, 107, 107);
+    text-shadow: 1px 1px 0px black;
+    background: rgba(255, 255, 0, 0.233);
+}
+
+.container {
+    width: auto;
+    height: auto;
+}
+.jumbotron {
+    text-align: center;
+    background-color: rgb(4,30,66);
+    background-image: url(https://vignette.wikia.nocookie.net/heroism/images/b/b3/Wall_of_warning_tape_1600_clr_8536.png/revision/latest?cb=20160526080032);
+    background-position: 100%;
+}
+
+.form-text {
+    font-size: 14px;
+}
+
+.form-group {
+    font-size: 20px;
+}
+
+.btn:hover {
+    color: dodgerblue;
+    background-color: white;
+    border: 2px solid black;
+}

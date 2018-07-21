@@ -9,13 +9,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
         crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/reset.css">
     <title>Crime Jam</title>
 </head>
 
 <body>
     <!--Welcome Screen-->
-    <div class="jumbotron jumbotron-fixed">
+    <div class="jumbotron jumbotron-float">
             <div class="container">
                 <h1 class="display-4">Crime Jam</h1>
                 <p class="lead">Welcome to Crime Jam! This app will help you locate your favorate concert venue in Dallas and crime statistics
@@ -26,12 +27,12 @@
         <div class="form-group">
             <label for="exampleInputName">Name</label>
             <input type="name" class="form-control" id="exampleInputName" placeholder="Enter Name">
-            <small id="emailHelp" class="form-text text-muted">First and last name</small>
+            <small id="nameHelp" class="form-text text">First and last name</small>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Email Address</label>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" class="form-text text">We'll never share your email with anyone else.</small>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
@@ -53,23 +54,82 @@
     <br> <br>
 
     <!--Crime Stats-->
-    <h1>Local Crime Statistics Breakdown</h1>
+    <div class="jumbotron jumbotron-fixed">
+            <div class="container">
+                <h1 class="display-4">Crime Statistics</h1>
+            </div>
+        </div>
+
     <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <button>Theft</button>
+                <button class="btn btn-primary">Theft</button>
               <span class="badge badge-primary badge-pill">1</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <button>Assault</button>
+                <button class="btn btn-primary">Assault</button>
               <span class="badge badge-primary badge-pill">1</span>
             </li>
             <li class="list-group-item d-flex justify-content-between align-items-center">
-              <button>Homicide</button>
+                <button class="btn btn-primary">Homicide</button>
               <span class="badge badge-primary badge-pill">1</span>
             </li>
           </ul>
 
     <!-- Optional JavaScript -->
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+          height: 50%;
+        }
+        /* Optional: Makes the sample page fill the window. */
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+        }
+    </style>
+    </head>
+    <body>
+      <div id="map"></div>
+      <script>
+        var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 6
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Location found.');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+      </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -77,6 +137,9 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpL81f_a0LphS9EokqNhTlqLjRFMu-ZgA&callback=initMap">
+    </script>
 </body>
 
 </html>

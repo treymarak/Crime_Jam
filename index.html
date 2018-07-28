@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" type="image/jpg" href="./assets/images/image.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Black+Ops+One|Monoton" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Crime Jam</title>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+</head>
+
+<body>
+    <!--Welcome Screen-->
+    <div class="jumbotron jumbotron-float">
+        <div class="container">
+            <h1 class="display-4">
+                <span id="crime" style="font-family: 'Black Ops One'; color: red;">Crime</span>
+                <span id="jam" style="font-family: 'Monoton';">Jam</span>
+            </h1>
+            <p class="lead">Welcome to Crime Jam! This app will help you find out if your favorite band is performing in Dallas and crime
+                statistics around that venue.</p>
+        </div>
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputName">
+                <strong>Name</strong>
+            </label>
+            <input type="name" class="form-control" id="exampleInputName" placeholder="Enter Name">
+            <small id="nameHelp" class="form-text text">First and last name</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">
+                <strong>Email Address</strong>
+            </label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email">
+            <small id="emailHelp" class="form-text text">We'll never share your email with anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
+    </form>
+
+    <br>
+    <br>
+
+    <!--Venue Search Screen-->
+    <div class="jumbotron jumbotron-float">
+            <div class="container">
+                <h1 class="display-4"><span id="crime" style="font-family: 'Black Ops One'; color: red;">Crime</span><span id="jam" style="font-family: 'Monoton';">Jam</span></h1>
+                <p class="lead">Search for your favorite band!</p>
+            </div>
+        </div>
+
+    <div class="input-group input-group-md">
+        <div class="input-group-prepend">
+            <button type="submit" class="btn btn-primary" id="search">Search</button>
+        </div>
+        <input id="search-artist" type="text" class="form-search" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
+            placeholder="Find Your Band!">
+    </div>
+    <br>
+    <br>
+
+    <!--Crime Stats-->
+    <!--Crime Stats-->
+    <div class="jumbotron jumbotron-fixed">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3"><a href="http://www.animatedimages.org/cat-police-and-cops-114.htm"><img src="http://www.animatedimages.org/data/media/114/animated-police-and-cop-image-0076.gif" border="0" alt="animated-police-and-cop-image-0076" /></a></div>
+                    <div class="col-sm-6"><h1 class="display-4"><span id="crime" style="font-family: 'Black Ops One'; color: red;">Crime</span><span id="jam" style="font-family: 'Monoton';">Jam</span></h1>
+                    <p class="lead">Local Crime Statistics</p></div>
+                    <div class="col-sm-3"><a href="http://www.animatedimages.org/cat-police-and-cops-114.htm"><img src="http://www.animatedimages.org/data/media/114/animated-police-and-cop-image-0076.gif" border="0" alt="animated-police-and-cop-image-0076" /></a></div>
+                </div>
+            </div>
+    </div>
+
+
+
+    <div class="container-2">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-danger btn-lg" id="crime-trigger">Crime Statistics</button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+
+        #map {
+            height: 65%;
+            width: 75%;
+            margin: 0 12.5% 0 12.5%;
+            border: 10px double rgb(66, 192, 214);
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div id="map"></div>
+
+    </body>
+    <br>
+
+    <div class="container-2">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-success btn-lg" id="map-trigger">Find Your Location</button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+
+    <div class="container-2">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-6" id="crime-container">
+                <h2>Crimes Nearby:</h2>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+
+
+    <br>
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.js"></script>
+    <script src="./assets/firebase.js"></script>
+    <!-- <script src="./bands.js"></script> -->
+    <script src="http://api.eventful.com/js/api"></script>
+    <script src="./assets/bandsSequel.js"></script>
+    <script src="./assets/crime.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpL81f_a0LphS9EokqNhTlqLjRFMu-ZgA&callback=initMap&libraries=places">
+    </script>
+    <script src="./assets/map.js"></script>
+</body>
+
+</html>

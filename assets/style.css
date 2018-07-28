@@ -1,0 +1,118 @@
+html {
+    width: 100%;
+}
+body {
+    background-color: rgb(134,147,151);
+    height:100%;
+    width: 100%;
+    display:block;
+    margin:auto;
+}
+
+h1 {
+    text-align: center;
+    width: 50%;
+    height: auto;
+    color: rgb(66, 192, 214);
+    text-shadow: 1px 1px 0px rgb(0, 0, 0);
+}
+
+p {
+    text-align: center;
+    width: 50%;
+    height: auto;
+    color: whitesmoke;
+    text-shadow: 1px 1px 0px blue;
+}
+
+.container {
+    width: 100%;
+    height: fit-content;
+    background: rgba(255, 255, 0, 0.233);
+}
+.jumbotron {
+    width: 100%;
+    text-align: center;
+    background-color: rgb(4,30,66);
+    background-image: url(https://vignette.wikia.nocookie.net/heroism/images/b/b3/Wall_of_warning_tape_1600_clr_8536.png/revision/latest?cb=20160526080032);
+    background-position: 100%;
+    border: 2px ridge red;
+}
+
+form {
+    max-width:25em;
+    display: block;
+    margin-left: auto;
+    margin-right:35%;
+   
+}
+
+.form-text {
+    font-size: 14px;
+}
+
+.form-group {
+    font-size: 20px;
+    border: 5px red;
+    
+}
+
+.form-search {
+    width: auto;
+}
+
+.input-group {
+    margin: auto;
+}
+
+.btn:hover {
+    color: dodgerblue;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.btn-success,
+.btn-danger {
+    width: 100%;
+}
+
+.btn-success:hover {
+    color:white;
+    background-color: rgba(9, 226, 9, 0.452);
+    border: 2px solid black;
+}
+
+.btn-danger:hover {
+    color: white;
+    background-color: rgba(226, 10, 10, 0.466);
+    border: 2px solid black;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.display-4 {
+    margin: auto;
+    font-size: 40px;
+    text-align: center;
+    width: auto;
+}
+.lead {
+    width: auto;
+    margin: auto;
+}
+
+.col-md-12 {
+    text-align: center;
+}
+
+.input {
+    color: black;
+}
+
+.list-group {
+    width: 65%;
+    overflow: hidden;
+}
